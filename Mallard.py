@@ -2,14 +2,7 @@
 import random
 import sys
 
-def find_between( s, first, last ):
-    try:
-        start = s.index( first ) + len( first )
-        end = s.index( last, start )
-        return s[start:end]
-    except ValueError:
-        return ""
-
+#Search the "input" array for a single char
 def Search2D(Input,SearchTerm):
 	final = [];
 	for i in range(len(Input[0])):
@@ -20,6 +13,7 @@ def Search2D(Input,SearchTerm):
 		return SearchTerm
 	return random.choice(final)		
 
+#Loop the Search2D function so you can search whole words
 def ObsfucateString(Input,SearchTerm):
 	output = ""
 	for item in SearchTerm:
@@ -27,7 +21,7 @@ def ObsfucateString(Input,SearchTerm):
 	return output
 
 
-
+#List of character and alternates. Expanded for usabilitys sake. 
 input = [
 '!,ǃ',
 '！,',
@@ -320,9 +314,12 @@ input = [
 '},｝',
 '~,～']
 
-
+#Format array to computer readable form
 output = []
 for item in input:
     items = item.split(',')
     output.append([items[0], items[1], ])
-print ObsfucateString(output,sys.argv[1])
+#Get input
+Query = sys.argv[1]
+#Return the good stuff
+print ObsfucateString(output,Query.lower())
